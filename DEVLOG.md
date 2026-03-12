@@ -94,7 +94,36 @@ D:\reactstudy/
 7. 빌드 테스트 통과
 
 ### 빌드 결과
-- index.html: 1.88 kB
+- index.html: 1.91 kB
 - CSS: 19.07 kB (gzip: 4.19 kB)
 - JS: 319.96 kB (gzip: 100.01 kB)
 - 빌드 시간: ~2.25s
+
+### 추가 작업
+8. 커스텀 도메인 CNAME 파일 추가 (public/CNAME → reactstudy.dreamitbiz.com)
+9. GitHub Pages 배포 (gh-pages 브랜치)
+10. README.md 작성 (프로젝트 소개, 가이드, 구조)
+
+### 커밋 이력
+| 커밋 | 내용 |
+|------|------|
+| `da7f876` | feat: React 학습 사이트 초기 구축 (28개 파일, 7704줄) |
+| `0a4edc5` | fix: 커스텀 도메인 CNAME 파일 추가 |
+| `d4c85fc` | docs: README.md 작성 |
+
+### 배포 정보
+- **배포 URL:** https://reactstudy.dreamitbiz.com
+- **GitHub Pages:** gh-pages 브랜치
+- **소스 코드:** https://github.com/aebonlee/reactstudy (main 브랜치)
+
+---
+
+## 개발 종료 - 2026-03-13
+
+### 최종 상태
+- 전체 소스 파일: 28개
+- 총 코드 라인: 7,700+ 줄
+- 학습 토픽: 35+개
+- 코드 예제: 100+개
+- 빌드 상태: 정상
+- 배포 상태: GitHub Pages 배포 완료
