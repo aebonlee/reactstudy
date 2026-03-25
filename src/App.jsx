@@ -12,6 +12,7 @@ import StylingGuide from './pages/StylingGuide'
 import AdvancedTopics from './pages/AdvancedTopics'
 import QnA from './pages/QnA'
 import Education from './pages/Education'
+import NotFound from './pages/NotFound'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -37,6 +38,7 @@ function App() {
         <Route path="/advanced" element={<AdvancedTopics />} />
         <Route path="/qna" element={<QnA />} />
         <Route path="/education" element={<Education />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
