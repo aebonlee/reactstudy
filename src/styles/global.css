@@ -1194,6 +1194,11 @@ a:hover {
   to { transform: translateX(0); }
 }
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* ===== 17. Scrollbar ===== */
 ::-webkit-scrollbar {
   width: 6px;
