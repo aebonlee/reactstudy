@@ -28,3 +28,11 @@ dist-ssr
 .env.*
 .env.local
 .env.production
+
+# Claude
+.claude/
+
+# Windows
+NUL
+nul
+Thumbs.db
