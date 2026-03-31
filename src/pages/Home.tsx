@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import {
@@ -5,7 +6,20 @@ import {
   FiZap, FiHelpCircle, FiBookOpen
 } from 'react-icons/fi';
 
-const categories = [
+interface Category {
+  to: string;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  badge?: string;
+}
+
+interface RoadmapStep {
+  title: string;
+  desc: string;
+}
+
+const categories: Category[] = [
   { to: '/basics', icon: <FiCode size={24} />, title: 'React 기초', description: 'JSX, 컴포넌트, Props, State 등 React의 핵심 개념을 학습합니다.', badge: '7 토픽' },
   { to: '/hooks', icon: <FiAnchor size={24} />, title: 'Hooks', description: 'useState, useEffect, useContext 등 React Hooks를 깊이 있게 배웁니다.', badge: '7 토픽' },
   { to: '/state-routing', icon: <FiLayers size={24} />, title: '상태관리 & 라우팅', description: 'React Router, Context API, Zustand로 앱 구조를 설계합니다.', badge: '4 토픽' },
@@ -15,14 +29,14 @@ const categories = [
   { to: '/education', icon: <FiBookOpen size={24} />, title: '교육과정', description: '체계적인 커리큘럼으로 React를 단계별로 학습하세요.' },
 ];
 
-const roadmapSteps = [
+const roadmapSteps: RoadmapStep[] = [
   { title: 'React 기초 이해', desc: 'JSX, 컴포넌트, Props, State 등 React의 핵심 개념과 동작 원리를 학습합니다.' },
   { title: 'Hooks 마스터', desc: 'useState, useEffect, useContext 등 React Hooks를 활용한 상태 관리와 사이드 이펙트 처리를 익힙니다.' },
   { title: '앱 구조 설계', desc: 'React Router로 SPA를 구축하고, Context API/Zustand로 전역 상태를 관리합니다.' },
   { title: '실전 프로젝트', desc: '스타일링, API 연동, 폼 처리, 성능 최적화까지 적용하여 완성도 높은 프로젝트를 만듭니다.' },
 ];
 
-export default function Home() {
+export default function Home(): React.ReactElement {
   return (
     <>
       <Hero

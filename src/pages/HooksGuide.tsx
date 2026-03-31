@@ -1,22 +1,22 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import CodeBlock from '../components/CodeBlock';
-import { basicsTopics } from '../data/learningData';
+import { hooksTopics } from '../data/learningData';
 
-export default function ReactBasics() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const topic = basicsTopics[selectedIndex];
+export default function HooksGuide(): React.ReactElement {
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const topic = hooksTopics[selectedIndex];
 
   return (
     <>
       <Hero
-        title="React 기초"
-        subtitle="JSX, 컴포넌트, Props, State 등 React 개발의 핵심 개념을 체계적으로 학습합니다."
+        title="React Hooks"
+        subtitle="useState, useEffect, useContext 등 React Hooks를 깊이 있게 학습합니다."
       />
 
       <div className="sub-nav">
         <div className="sub-nav-inner">
-          {basicsTopics.map((t, i) => (
+          {hooksTopics.map((t, i) => (
             <button
               key={i}
               className={`sub-nav-tab${selectedIndex === i ? ' active' : ''}`}

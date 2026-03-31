@@ -1,22 +1,22 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import CodeBlock from '../components/CodeBlock';
-import { stateRoutingTopics } from '../data/learningData';
+import { advancedTopics } from '../data/learningData';
 
-export default function StateRouting() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const topic = stateRoutingTopics[selectedIndex];
+export default function AdvancedTopics(): React.ReactElement {
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const topic = advancedTopics[selectedIndex];
 
   return (
     <>
       <Hero
-        title="상태관리 & 라우팅"
-        subtitle="React Router, Context API, Zustand로 앱의 구조를 설계하고 상태를 효과적으로 관리합니다."
+        title="심화학습"
+        subtitle="성능 최적화, TypeScript, 테스팅, Next.js 등 프로덕션 수준의 React 개발을 학습합니다."
       />
 
       <div className="sub-nav">
         <div className="sub-nav-inner">
-          {stateRoutingTopics.map((t, i) => (
+          {advancedTopics.map((t, i) => (
             <button
               key={i}
               className={`sub-nav-tab${selectedIndex === i ? ' active' : ''}`}

@@ -1,22 +1,22 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import CodeBlock from '../components/CodeBlock';
-import { advancedTopics } from '../data/learningData';
+import { stylingTopics } from '../data/learningData';
 
-export default function AdvancedTopics() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const topic = advancedTopics[selectedIndex];
+export default function StylingGuide(): React.ReactElement {
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const topic = stylingTopics[selectedIndex];
 
   return (
     <>
       <Hero
-        title="심화학습"
-        subtitle="성능 최적화, TypeScript, 테스팅, Next.js 등 프로덕션 수준의 React 개발을 학습합니다."
+        title="스타일링"
+        subtitle="CSS Modules, Styled Components, Tailwind CSS 등 React 스타일링 기법을 학습합니다."
       />
 
       <div className="sub-nav">
         <div className="sub-nav-inner">
-          {advancedTopics.map((t, i) => (
+          {stylingTopics.map((t, i) => (
             <button
               key={i}
               className={`sub-nav-tab${selectedIndex === i ? ' active' : ''}`}

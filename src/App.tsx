@@ -1,29 +1,30 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect, lazy, Suspense } from 'react'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import SearchModal from './components/SearchModal'
-import MobileDrawer from './components/MobileDrawer'
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect, lazy, Suspense } from 'react';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import SearchModal from './components/SearchModal';
+import MobileDrawer from './components/MobileDrawer';
 
-const Home = lazy(() => import('./pages/Home'))
-const ReactBasics = lazy(() => import('./pages/ReactBasics'))
-const HooksGuide = lazy(() => import('./pages/HooksGuide'))
-const StateRouting = lazy(() => import('./pages/StateRouting'))
-const StylingGuide = lazy(() => import('./pages/StylingGuide'))
-const AdvancedTopics = lazy(() => import('./pages/AdvancedTopics'))
-const QnA = lazy(() => import('./pages/QnA'))
-const Education = lazy(() => import('./pages/Education'))
-const NotFound = lazy(() => import('./pages/NotFound'))
+const Home = lazy(() => import('./pages/Home'));
+const ReactBasics = lazy(() => import('./pages/ReactBasics'));
+const HooksGuide = lazy(() => import('./pages/HooksGuide'));
+const StateRouting = lazy(() => import('./pages/StateRouting'));
+const StylingGuide = lazy(() => import('./pages/StylingGuide'));
+const AdvancedTopics = lazy(() => import('./pages/AdvancedTopics'));
+const QnA = lazy(() => import('./pages/QnA'));
+const Education = lazy(() => import('./pages/Education'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
-function ScrollToTop() {
-  const { pathname } = useLocation()
+function ScrollToTop(): null {
+  const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
-  return null
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
 }
 
-function LoadingFallback() {
+function LoadingFallback(): React.ReactElement {
   return (
     <div style={{
       display: 'flex',
@@ -45,10 +46,10 @@ function LoadingFallback() {
         <p style={{ margin: 0, fontSize: '0.9rem' }}>Loading...</p>
       </div>
     </div>
-  )
+  );
 }
 
-function App() {
+function App(): React.ReactElement {
   return (
     <>
       <ScrollToTop />
@@ -70,7 +71,7 @@ function App() {
       </Suspense>
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

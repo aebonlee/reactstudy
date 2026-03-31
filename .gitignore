@@ -32,6 +32,9 @@ dist-ssr
 # Claude
 .claude/
 
+# TypeScript build info
+tsconfig.tsbuildinfo
+
 # Windows
 NUL
 nul

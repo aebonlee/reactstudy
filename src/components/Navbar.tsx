@@ -1,8 +1,14 @@
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiSearch, FiSun, FiMoon, FiMenu } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
 
-const navItems = [
+interface NavItem {
+  path: string;
+  label: string;
+}
+
+const navItems: NavItem[] = [
   { path: '/', label: '홈' },
   { path: '/basics', label: 'React 기초' },
   { path: '/hooks', label: 'Hooks' },
@@ -13,7 +19,15 @@ const navItems = [
   { path: '/education', label: '교육과정' },
 ];
 
-export default function Navbar() {
+const colorMap: Record<string, string> = {
+  blue: '#0046C8',
+  red: '#DC2626',
+  green: '#059669',
+  purple: '#7C3AED',
+  orange: '#EA580C',
+};
+
+export default function Navbar(): React.ReactElement {
   const location = useLocation();
   const { isDark, toggleTheme, colorTheme, setColorTheme, COLORS, setSearchOpen, setMobileMenuOpen } = useTheme();
 
@@ -53,13 +67,7 @@ export default function Navbar() {
                 key={color}
                 className={`color-dot ${colorTheme === color ? 'active' : ''}`}
                 style={{
-                  background: {
-                    blue: '#0046C8',
-                    red: '#DC2626',
-                    green: '#059669',
-                    purple: '#7C3AED',
-                    orange: '#EA580C',
-                  }[color],
+                  background: colorMap[color] || '#0046C8',
                 }}
                 onClick={() => setColorTheme(color)}
                 title={color}
@@ -77,3 +85,4 @@ export default function Navbar() {
 }
 
 export { navItems };
+export type { NavItem };

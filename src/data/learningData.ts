@@ -2,8 +2,45 @@
 // React Study - 학습 콘텐츠 데이터
 // ============================================================
 
+// ===== 타입 정의 =====
+export interface SearchItem {
+  title: string;
+  category: string;
+  path: string;
+  icon: string;
+}
+
+export interface ContentSection {
+  subtitle?: string;
+  text?: string;
+  items?: string[];
+}
+
+export interface Topic {
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  content: ContentSection[];
+  code: string;
+  codeLang: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface EducationCourse {
+  id: string;
+  level: string;
+  title: string;
+  description: string;
+  topics: string[];
+}
+
 // ===== 1. 검색 데이터 =====
-export const searchData = [
+export const searchData: SearchItem[] = [
   { title: 'JSX 문법', category: 'React 기초', path: '/basics', icon: '📝' },
   { title: '컴포넌트 이해', category: 'React 기초', path: '/basics', icon: '🧩' },
   { title: 'Props 전달', category: 'React 기초', path: '/basics', icon: '📨' },
@@ -35,7 +72,7 @@ export const searchData = [
 ];
 
 // ===== 2. React 기초 토픽 =====
-export const basicsTopics = [
+export const basicsTopics: Topic[] = [
   {
     id: 'jsx',
     title: 'JSX 문법',
@@ -330,7 +367,7 @@ function EventExample() {
 ];
 
 // ===== 3. Hooks 토픽 =====
-export const hooksTopics = [
+export const hooksTopics: Topic[] = [
   {
     id: 'useState',
     title: 'useState',
@@ -757,7 +794,7 @@ function UserList() {
 ];
 
 // ===== 4. 상태관리 & 라우팅 토픽 =====
-export const stateRoutingTopics = [
+export const stateRoutingTopics: Topic[] = [
   {
     id: 'react-router',
     title: 'React Router',
@@ -969,7 +1006,7 @@ function Counter() {
 ];
 
 // ===== 5. 스타일링 토픽 =====
-export const stylingTopics = [
+export const stylingTopics: Topic[] = [
   {
     id: 'css-modules',
     title: 'CSS Modules',
@@ -1197,7 +1234,7 @@ function Layout({ children }) {
 ];
 
 // ===== 6. 심화학습 토픽 =====
-export const advancedTopics = [
+export const advancedTopics: Topic[] = [
   {
     id: 'performance',
     title: '성능 최적화',
@@ -1548,7 +1585,7 @@ function PostManager() {
 ];
 
 // ===== 7. FAQ 데이터 =====
-export const faqData = [
+export const faqData: FaqItem[] = [
   {
     question: 'React는 프레임워크인가요, 라이브러리인가요?',
     answer: 'React는 UI를 구축하기 위한 "라이브러리"입니다. Angular나 Vue와 달리 라우팅, 상태관리 등을 내장하지 않고, 필요한 라이브러리를 선택하여 조합합니다. 이러한 유연성이 React의 큰 장점이지만, 초보자에게는 선택의 부담이 될 수 있습니다. Next.js를 사용하면 이런 결정들이 미리 되어 있어 편리합니다.',
@@ -1584,7 +1621,7 @@ export const faqData = [
 ];
 
 // ===== 8. 교육과정 데이터 =====
-export const educationData = [
+export const educationData: EducationCourse[] = [
   {
     id: 'beginner',
     level: '입문',
