@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiSearch, FiSun, FiMoon, FiMenu } from 'react-icons/fi';
+import { FiSearch, FiSun, FiMoon, FiMenu, FiLogIn, FiLogOut } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 interface NavItem {
   path: string;
@@ -30,6 +31,7 @@ const colorMap: Record<string, string> = {
 export default function Navbar(): React.ReactElement {
   const location = useLocation();
   const { isDark, toggleTheme, colorTheme, setColorTheme, COLORS, setSearchOpen, setMobileMenuOpen } = useTheme();
+  const { isAuthenticated, logout, user } = useAuth();
 
   return (
     <nav className="navbar">
@@ -74,6 +76,21 @@ export default function Navbar(): React.ReactElement {
               />
             ))}
           </div>
+
+          {isAuthenticated ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '13px', opacity: 0.8, maxWidth: '120px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {user?.email}
+              </span>
+              <button className="nav-action-btn" onClick={() => logout()} title="로그아웃">
+                <FiLogOut />
+              </button>
+            </div>
+          ) : (
+            <Link to="/login" className="nav-action-btn" title="로그인">
+              <FiLogIn />
+            </Link>
+          )}
 
           <button className="hamburger-btn" onClick={() => setMobileMenuOpen(true)}>
             <FiMenu />
