@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiSearch, FiSun, FiMoon, FiMenu, FiLogIn, FiLogOut } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
@@ -10,7 +10,6 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { path: '/', label: '홈' },
   { path: '/basics', label: 'React 기초' },
   { path: '/hooks', label: 'Hooks' },
   { path: '/state-routing', label: '상태관리 & 라우팅' },
@@ -32,6 +31,7 @@ export default function Navbar(): React.ReactElement {
   const location = useLocation();
   const { isDark, toggleTheme, colorTheme, setColorTheme, COLORS, setSearchOpen, setMobileMenuOpen } = useTheme();
   const { isAuthenticated, logout, user } = useAuth();
+  const [colorPickerOpen, setColorPickerOpen] = useState(false);
 
   return (
     <nav className="navbar">
@@ -63,29 +63,36 @@ export default function Navbar(): React.ReactElement {
             {isDark ? <FiSun /> : <FiMoon />}
           </button>
 
-          <div className="color-picker">
-            {COLORS.map(color => (
-              <button
-                key={color}
-                className={`color-dot ${colorTheme === color ? 'active' : ''}`}
-                style={{
-                  background: colorMap[color] || '#0046C8',
-                }}
-                onClick={() => setColorTheme(color)}
-                title={color}
-              />
-            ))}
+          <div
+            className="color-picker-wrap"
+            onMouseEnter={() => setColorPickerOpen(true)}
+            onMouseLeave={() => setColorPickerOpen(false)}
+          >
+            <button
+              className="color-picker-trigger"
+              style={{ background: colorMap[colorTheme] || '#0046C8' }}
+              title="테마 색상"
+              onClick={() => setColorPickerOpen(v => !v)}
+            />
+            {colorPickerOpen && (
+              <div className="color-picker-popup">
+                {COLORS.map(color => (
+                  <button
+                    key={color}
+                    className={`color-dot ${colorTheme === color ? 'active' : ''}`}
+                    style={{ background: colorMap[color] || '#0046C8' }}
+                    onClick={() => { setColorTheme(color); setColorPickerOpen(false); }}
+                    title={color}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           {isAuthenticated ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '13px', opacity: 0.8, maxWidth: '120px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {user?.email}
-              </span>
-              <button className="nav-action-btn" onClick={() => logout()} title="로그아웃">
-                <FiLogOut />
-              </button>
-            </div>
+            <button className="nav-action-btn" onClick={() => logout()} title={`로그아웃 (${user?.email ?? ''})`}>
+              <FiLogOut />
+            </button>
           ) : (
             <Link to="/login" className="nav-action-btn" title="로그인">
               <FiLogIn />
